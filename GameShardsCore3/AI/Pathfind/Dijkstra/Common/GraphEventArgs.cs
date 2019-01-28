@@ -1,11 +1,14 @@
-﻿using System;
+﻿using GameShardsCore3.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AI.Pathfind.Dijkstra.Common {
+namespace GameShardsCore3.AI.Pathfind.Dijkstra.Common {
 
+    [DevelopedBy("SmokeyTheBandicoot")]
+    [MaintainedBy("SmokeyTheBandicoot")]
     /// <summary>
     /// Class which contains info about Graph events
     /// </summary>

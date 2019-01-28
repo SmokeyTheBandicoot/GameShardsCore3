@@ -272,3 +272,20 @@ Dijkstra:
 -Removed ToastNotification form
 -Removed UserAccessControl form
 -Removed TrophyShowcase form
+
+
+
+
+^Version 3.0.0
++Added a LibLanguageManager, which uses Microsoft implementation of ResourceManager to manage resources, including languges
++Added localized strings for all Library messages
++Added Dates.Utils class which has utility functions on dates
++Added Gameworks, a section of the Library which will contain basic Frameworks common to many games
++Added Gameworks.Cards, which contains all classes and code to work with basic cards for card games
++Added FrenchCards, which implements all the code to manage french playing cards
++Added a Deck class which manages a deck of cards, including card shuffling
++Added and improved various ways of generating Random numbers. Now they can be generated in distributions (Discrete/Continuous Uniform and Normal)
++Added Many estension methods for arrays, namely Add, AddRange, Remove, RemoveRange, Insert, InsertRange, Reverse
++Added custom attributes classes (Tested, ToTest, ToDo, WIP)
+°Refactored a lot of code in multiple classes and moved classes in appropriate folders
+°Rewritten all the code in C#, to allow full compatibility with Unity3D

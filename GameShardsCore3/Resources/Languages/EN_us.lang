@@ -1,0 +1,23 @@
+﻿# Exceptions
+## General
+exception_argument_collection_empty_null = "Collection is empty or null"
+exception_argument_max_less_than_min = "Maximum cannot be less than Minimum"
+exception_argument_null = "Argument cannot be null"
+exception_argument_oor = "Argument out of range"
+exception_index_oor = "Index is out of range"
+exception_index_end_before_start = "End index cannot be smaller than start index"
+## AI.Dijkstra
+exception_graph_structure = "Something went wrong in the graph structure"
+## ArrayExtended
+exception_index_must_be_from = "Index must be from"
+## Date.Utils
+exception_date_wrong_end_before_start = "End date cannot be before Start date"
+## Cards
+exception_deck_empty = "Deck is Empty"
+## Mathematics
+exception_conversion_failed = "Cannot convert the number to base 10"
+exception_alphabet_too_short = "Alphabet has to contain a number of symbols equal to the target base"
+#Generic
+## Common
+to = "to"
+
