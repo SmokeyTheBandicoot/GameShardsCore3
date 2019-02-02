@@ -1,0 +1,292 @@
+^Version 2.0 From GameShardsCoreBETA (1.0) 
+° = Changes
++ = Additions
+- = Removals
+x = Fixes
+
+Core:
+°Reworked and refactored code
+°Opened a new GitHub repository
+°Improved function and properties with proper use of Shared, Readonly and Shared Readonly operators
+°Changed many One-time-use functions to be more generic and useful
+-Removed a lot of One-time-use functions that were pretty specific and useless
+
+
+Math:
++Started Matrix2D with basic and advanced operators (Determinant, Algebric Complements and so on) - TO FINISH AND TEST
++Started Matrix2D utils (IsSquare, IsTriangular and so on) - TO FINISH AND TEST
++Started Matrix2D tranformations (rotate, scale, translate, flip) - TO FINISH AND TEST
++Added Factorial (!) operator which returns a BigInteger
++Added SeparateDecimalPart Operator, which separates the Whole part of a number from the decimal part
++Added Swap function, to swap 2 values
+-Removed some Math constants due to them being in System.Math (PI, E, positive and negative infinity, double epsilon)
+
+
+Physics:
+°Changed Unit Converter to be more open to new unit scales
+°Reworked and removed some constants (same constants in different unit of measures. Now you use the unit converter)
++Added Reaumur Temperature Scale
++Added Temperature Class and Temperature Unit Structure to improve code readability
++Added Documentation for a lot more functions and classes
++Added ChangeLog file and ChangeLog Manager class
++Added Plane AngleConverter
++Added 5 Plane Angle Unit: Degrees, Radiants, Centesimal Degrees (Gon), primes (arcminutes) and seconds (arcseconds)
++Added Plane Angle Utils (IsNull, IsFull, IsRight, etc..)
++Added Plane Angle Converter to the format <degs>° <primes>' <seconds>''
++Added PlaneAngle Class and PlaneAngleUnit Structure
++Added Area Class, AreaUnit Structure and converter
++Added Area Units (square foot, square meter, square inch, square mile, square yard, hectare and acre)
++Added Energy Class and EnergyUnit Structure and converter
++Added EnergyUnits: Joule, calorie, watthour, electronvolt, british thermal unit, therm USA and foot pound
++Added Pressure Units (Pascal, bar, Torr, atmosphere, PSI)
+
+
+Geometry:
++Added back Geometry 1D and Geometry 2D basic functions present in GameShardsCoreBETA
++Added back Geomtry Constants (Rad to Deg, Deg to Rad and Golden Ratio)
+
+
+Color:
++Added back the "GetComplementaryColor" function from GameShardsCoreBETA
+
+
+Misc:
++Added back the GSIncompatibleArgumentsException, GSIncorrectSyntaxException and GSMethodNotDesignedForCurrentObjectException exceptions from GSCoreBETA
+
+
+
+
+^Version 2.1
++Added Measure and UnitOfMeasure abstract classes
++Added Digit Shortener, among with some default alphabets #1
++Added Time units (nano, micro, milli, centi, second, minute, hour up to century)
++Added Alphabet Abstract class, to use with digit shortener and DNA converter (Base converter from old GSCoreBETA)
++Added CharAlphabet and StringAlphabet classes (inherit from Alphabet)
++Added ExponentialNotation shortener (TO FINISH AND TEST)
++Added Swap function and SeparateDecimalPart function
+°Changed the way that Measures are handled
+°Reworked Conversion Code
+
+
+
+
+^Version 2.2
++Added Degree to Degree Primes Minutes
++Added missing converters
++Added back arrayExt from GSCoreBETA #4
+°Tested exponential notation and digit shortener
+
+
+
+
+^Version 2.3
++Added ConvertToStandardTime function (Millenniums, Centiries, Decades, Years and so on)
++Added MassOfSun and AtomicMassUnit as unit of measure of mass
++Added Light Year as unit of measure of length
++Added Alphabet alphabet
++Added HEX, RNA, DNA alphabet
++Added Alphanumeric alphabet
++Added Binary Alphabet
++Added Octal Alphabet
++Added BaseTen alphabet
++Added back StringReplacer (Now AlphabetReplacer) from GameShardsCoreBETA
++Added Hundreds of new unit of measures and dozens of new Measures (speed, data transfer, fuel consumption, electric charge, electric conductange, magnetic field flux, etc)
++Added custom functions that provide the functionality to define new units of measure for derived units of measure (Linear Velocity, Angular velocity, Pressure, Area, Volume, Energy, Power, Force, FuelEfficiency, Linear Acceleration, Angular Acceleration, Density, Data Transfer, Specific Volume, and many others)
++Added New specific function that list all measures and units of measures programmatically (automatically adds new ones)
++Added Reserved chars alphabet
++Added methods to add new Acceleration units (from length and two different time units, length and a single time unit (squared) or a speed and a timeunit)
+xFixed Degree to Degree Primes Minutes for negative angles and Minutes value
+°Rewritten ConvertBaseNToTen to include bases with more than 9 symbols (base 9, from 0 to 8)
+°Convert BaseNToTen now optionally requires an alphabet of symbols
+
+
+
+
+^Version 2.4
++Added back Encryptor and its functions
++Added Back Summation and Multiplication
++Added Color converter (Supports RGB, HSL, HSV, HEX, CMYK)
++Added New color class (HSL, HSV, CMYK, HEX)
++Added IsPerfect Function (Shared)
++Added ToRomanNumber converter (Decimal to roman)
++Added Roman and RomanExtended alphabets
++Added back Crasher (ArgumentOutOfRange, DivisionByZero, Overflow)
++Added complemetary color functions for all supported color codes (RGB, HEX, HSL, HSV, CMYK) 
++Added back Extended controls (BorderColor GroupBox, Console, Extended Picturebox)
++Added utilities to get version and install path
++Added method to change install directory
++Added an inteface (IGameShardsProgram) which should be implemented by all GameShards products
+°Encryptor functions are now Shared
+°Optimized Translation Encryption
+°Some Numerical Physic constants are now actual measures. To get their value use <constant>.Value (I.E.: SpeedOfLight.Value returns 299792458, SpeedOfLight.UnitOfMeasure returns SpeedUnit.MeterPerSecond)
+-Removed SimpleSummation and SimpleMultiplication (just use Summation and Multiplication functions)
+
+
+
+
+^Version 2.5
++Added Resource Manager to better handle Texture, Fonts, Sounds, Music and Language files and packs [WIP]
++Added working Language manager to change language at runtime
++Added Function Majority to basic math operators
++Added FlipMatrix function
++Added Min and Max functions in basic math operators
++Added IGameShardsProgram interface, that should be used in all GameShards programs
+°Improved Search Algorithm for Resource Managers using BinarySearch
+°LanguageRegister now has a list of strings that represents the list of unlocalized entries (used for binary search)
+
+
+
+
+^Version 2.5.1
++Added Matrix Product
++Added Matrix.IsEmpty property
++Added PrintMatrix function
+-Removed Matrix.IsCube property
+
+
+
+
+^Version 2.6
++Added GSList and GSOrderedList data structures with relative properties and routines
++Minor refactory and documentation
+-Removed GSRegEx temporarily
+-Removed Summation and Product temporarily (needs fixing)
+
+
+
+
+^Version 2.6.1
++Re-implemented GSRegEx $?[<Int:Min>-<Int:Max>] and * operators (now they work correctly)
++Re-implemented GSRegEx $%[<Char:c>-<Int:Min>-<Int:Max>] operator (now it works correctly)
++Implemented GSRegEx $Matches(<String>) operator
++Implemented GSRegEx $ContainsW(<String>) operator
+xFixed a bug where the GSRegEx evaluator wouldn't check if an operator was at the beginning of the expression
+
+
+
+
+^Version 2.6.2
++Added Greek Alphabet with methods to get their symbols (lowercase and uppercase) and their name
++Added Many Mathematical constants (With more to add)
+°Improved code and memory usage in StringAlphabet and CharAlphabet classes
+°GsRegEx not working and needs to be fixed and completed
+
+
+
+
+^Version 2.6.3
++Started Chemistry Namespace (elements and element manager, molecules and molecules manager)
++Added some geometry Constants (Hexagon apothem)
+
+
+
+
+^Version 2.7.0
++Added accounts, trophies, UserAccess form and TrophyShowcase form
++Added Core class to the library, which contains assembly information (name, path, version)
++Added Trophies and Resources, along with trophies routines to properly support them
++Added Toast notifications
++Added Toast Notification Manager queue and utilities to correctly handle Toast notifications
++Added GetApothem(2 Overload) functions in Geometry2D
+xFixed GetAngleFromTwoPoints function
+°Changed IGameShardsProgram interface to support trophies and accounts
+°Chanced core class of the library, now it has a MainCore (Shared) which should be unique for each assembly
+°Merged Core and GSCore classes (in GSCore). Core namespace still remains
+°Cleaned up code in ColorManager
+°Changed some code in Geometry1D and Geometry2D classes
+
+
+
+
+^Version 2.7.1
++Started The RomanNumber to Integer function
++Added back FastSummation and FastMultiplication functions (performance improvements, general polishing)
+xFixed the Chemistry Elements having the mass as Single insted as Mass (Defined in Physics)
+°Removed unused import on ToastNotification File
+
+
+
+
+^Version 2.7.2
++Added a WriteListToFile and ReadListFromFile(Of T) methods
++Added MergeArray function, with some options
+°Minor merge between versions
+
+
+
+
+^Version 2.7.3
++Added functions to save Comboboxes' items to file (and read from file)
++Added IsFontInstalled(FontName As String) function
++Added Minority function(double and boolean)
++Added Illuminance and IlluminanceUnit classes
+xFixed ListSaver.ReadFromFile to not close the file stream after having read
+°Renamed SaveListToFile to SaveToFile
+°Renamed ReadListFromFile to ReadFromFile
+°Moved Utils class in separate file and namespace. GameShardsCore2.Core.Utils is migrated to GameShardsCore2.SaveUtils.ListSaver
+°Utils is renamed to ListSaver and will only contain routines to save/load lists
+
+
+
+
+^Version 2.8.0
++Added AI namespace
++Added Pathfind namespace in AI namespace
++Added Djikstra pathfind algorithm. Supports unidirectional Edges (Going from A to B is different from B to A) (Fully documented inside)
++Added Graph Data structure, used by Pathfinding algorithms
++Added GraphNode and GraphEdge classes, for use in Graph
++Added PartialPath as structure to help with Djikstra PF algorithm
++Added PathMatrix as a quick way to represent and pathfind on uniform or Weighted Graphs where the weight of the node does not depend from the Edge, but from the node itself (InPlace)
++Added Graph.FromPathMatrix() function to convert an existing PathMatrix into a graph to actually do pathfinding
++Added PathMatrix constructor to generate a PathMatrix from Matrix of double, Matrix of GraphNodes or from Width and Height (All values will be set to 1)
+
+
+
+
+^Version 2.8.1
+Dijkstra:
+°Totally reworked Dijkstra Algorithm implementation. The new one is weaker (for now) but works in all cases (Closed loop, single connection to node, isolated node)
+°Improved performance on Dijkstra implementation
+°Turned option explicit On and adjusted code to compile with this option active in ArrayExt
+°Turned option explicit On ad adjusted code to compile with this option active in Encryptor
+°Turned option explicit On ad adjusted code to compile with this option active in GameShardsRegEx
+°Turned option explicit On ad adjusted code to compile with this option active in Math
+°Turned option explicit On ad adjusted code to compile with this option active in StringManager
+
+
+
+
+^Version 2.8.1.1
++Added FromMatrix function in Dijkstra Graph. Creates a new Graph from a 2-dimensional Matrix of doubles
++Added GetPathDistance function in Dijkstra Algorithm. Calculates the total distance of a certain list of nodes which are in the graph
+
+
+
+
+^Version 2.9.0
+°Moved all the classes which depend on System.Windows and System.Windows.Forms in a new Library called GameShardsCore2_Windows
+°The new library will manage all the aspects bound to Windows Forms, such as Forms, controls, notifications and so on.
+°GameShardsCore2 should now be compatible with Unity3D
+-Removed Matrix<Of T> classes as they are already present in System.Numerics .NET lib
+-Removed EntryForm form
+-Removed ToastNotification form
+-Removed UserAccessControl form
+-Removed TrophyShowcase form
+
+
+
+
+^Version 3.0.0
++Added a LibLanguageManager, which uses Microsoft implementation of ResourceManager to manage resources, including languges
++Added localized strings for all Library messages
++Added Dates.Utils class which has utility functions on dates
++Added Gameworks, a section of the Library which will contain basic Frameworks common to many games
++Added Gameworks.Cards, which contains all classes and code to work with basic cards for card games
++Added FrenchCards, which implements all the code to manage french playing cards
++Added a Deck class which manages a deck of cards, including card shuffling
++Added and improved various ways of generating Random numbers. Now they can be generated in distributions (Discrete/Continuous Uniform and Normal)
++Added Many estension methods for arrays, namely Add, AddRange, Remove, RemoveRange, Insert, InsertRange, Reverse
++Added custom attributes classes (Tested, ToTest, ToDo, WIP, Version(Major, Minor, Revision, Build)
+°Changed, Removed and Improved some functions in the Color namespace, in order to improve performance and maintain consistency
+°Refactored a lot of code in multiple classes and moved classes in appropriate folders
+°Rewritten all the code in C#, to allow full compatibility with Unity3D
