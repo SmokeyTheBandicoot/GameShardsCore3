@@ -55,8 +55,12 @@
     <Compile Include="Attributes\TestedAttribute.cs" />
     <Compile Include="Attributes\ToDoAttribute.cs" />
     <Compile Include="Attributes\ToTestAttribute.cs" />
+    <Compile Include="Attributes\VersionAttribute.cs" />
     <Compile Include="Attributes\WIPAttribute.cs" />
+    <Compile Include="Colors\CMYKColor.cs" />
     <Compile Include="Colors\HEXColor.cs" />
+    <Compile Include="Colors\HSLColor.cs" />
+    <Compile Include="Colors\HSVColor.cs" />
     <Compile Include="Core\LibLanguage\LibLanguageManager.cs" />
     <Compile Include="Date\Utils.cs" />
     <Compile Include="Exceptions\DeckEmptyException.cs" />
@@ -95,7 +99,9 @@
     </Compile>
     <Compile Include="StringManipulation\Alphabet\Alphabet.cs" />
     <Compile Include="StringManipulation\Alphabet\CharAlphabet.cs" />
+    <Compile Include="StringManipulation\Alphabet\GreekAlphabet.cs" />
     <Compile Include="StringManipulation\Alphabet\StringAlphabet.cs" />
+    <Compile Include="StringManipulation\DigitShortener\DigitShortener.cs" />
     <Compile Include="StringManipulation\StringManipulator.cs" />
   </ItemGroup>
   <ItemGroup>

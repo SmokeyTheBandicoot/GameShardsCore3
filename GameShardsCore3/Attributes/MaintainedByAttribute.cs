@@ -8,6 +8,7 @@ namespace GameShardsCore3.Attributes {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 0, 0)]
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = true)]
     public sealed class MaintainedByAttribute : Attribute {
 

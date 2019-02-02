@@ -11,6 +11,7 @@ namespace GameShardsCore3.AI.Pathfind.Dijkstra.Main {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 0, 1)]
     /// <summary>
     /// Class which computes the Dijkstra algorithm on a Graph
     /// </summary>

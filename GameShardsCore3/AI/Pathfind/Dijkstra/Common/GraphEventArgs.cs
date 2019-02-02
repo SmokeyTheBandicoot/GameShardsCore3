@@ -9,6 +9,7 @@ namespace GameShardsCore3.AI.Pathfind.Dijkstra.Common {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1,0,0)]
     /// <summary>
     /// Class which contains info about Graph events
     /// </summary>

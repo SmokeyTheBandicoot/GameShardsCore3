@@ -8,7 +8,8 @@ namespace GameShardsCore3.Attributes {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [Version(1, 0, 0, 'b')]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Constructor | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class TestedAttribute : Attribute {
     }
 

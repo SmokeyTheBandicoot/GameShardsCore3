@@ -3,92 +3,109 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using GameShardsCore3.Attributes;
+using GameShardsCore3.Mathematics.BaseConverter;
+using GameShardsCore3.StringManipulation.Alphabet;
+using static GameShardsCore3.Core.LibLanguage.LibLanguageManager;
 
 namespace GameShardsCore3.Colors {
 
+    [DevelopedBy("SmokeyTheBandicoot")]
+    [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 0, 0, 'b')]
     [WIP()]
     public struct HEXColor {
 
+        [ToTest()]
+        public byte Red { get; set; }
+
+        [ToTest()]
+        public byte Green { get; set; }
+
+        [ToTest()]
+        public byte Blue { get; set; }
+
+        [ToTest()]
+        public byte Alpha { get; set; }
+
+
+        [ToTest()]
+        /// <summary>
+        /// HEXCode format. #RRGGBBAA or RRGGBBAA (Red, Green, Blue, Alpha)
+        /// </summary>
+        /// <param name="HexCode"></param>
         public HEXColor(string HexCode) {
 
+            if (HexCode.StartsWith("#")) HexCode = HexCode.Replace("#", "");
+            if (HexCode.Length != 8) throw new ArgumentException(LangManager.GetString("exception_bad_color_code", CurrentCulture));
+
+            Red = (byte)BaseConverter.ConverToBase10(HexCode[0].ToString() + HexCode[1].ToString(), 16, Alphabet.Hexadecimal, false);
+            Green = (byte)BaseConverter.ConverToBase10(HexCode[2].ToString() + HexCode[3].ToString(), 16, Alphabet.Hexadecimal, false);
+            Blue = (byte)BaseConverter.ConverToBase10(HexCode[4].ToString() + HexCode[5].ToString(), 16, Alphabet.Hexadecimal, false);
+            Alpha = (byte)BaseConverter.ConverToBase10(HexCode[6].ToString() + HexCode[7].ToString(), 16, Alphabet.Hexadecimal, false);
         }
 
-        public HEXColor(string R, string G, string B) {
+        [ToTest()]
+        /// <summary>
+        /// HEXColor from System.Drawing.Color
+        /// </summary>
+        /// <param name="C"></param>
+        public HEXColor(Color C) {
+            Red = C.R;
+            Green = C.G;
+            Blue = C.B;
+            Alpha = C.A;
+        }
 
+        /// <summary>
+        /// HEXColor from ARGB strings
+        /// </summary>
+        /// <param name="R"></param>
+        /// <param name="G"></param>
+        /// <param name="B"></param>
+        /// <param name="A"></param>
+        [ToTest()]
+        public HEXColor(string R, string G, string B, string A) {
+            Red = (byte)BaseConverter.ConverToBase10(R, 16, Alphabet.Hexadecimal, false);
+            Green = (byte)BaseConverter.ConverToBase10(G, 16, Alphabet.Hexadecimal, false);
+            Blue = (byte)BaseConverter.ConverToBase10(B, 16, Alphabet.Hexadecimal, false);
+            Alpha = (byte)BaseConverter.ConverToBase10(A, 16, Alphabet.Hexadecimal, false);
+        }
+
+        public HEXColor(byte R, byte G, byte B, byte A) {
+            Red = R;
+            Green = G;
+            Blue = B;
+            Alpha = A;
+        }
+
+
+        public static HEXColor FromARGB(byte R, byte G, byte B, byte A) {
+            return new HEXColor(R, G, B, A);
+        }
+
+        public static HEXColor FromARGBColor(Color C) {
+            return new HEXColor(C);
+        }
+
+        public static HEXColor FromCode(string Code) {
+            return new HEXColor(Code);
+        }
+
+        public Color ToARGB() {
+            return Color.FromArgb(Red, Green, Blue, Alpha);
+        }
+
+        [ToTest()]
+        public override string ToString() {
+            return String.Format("#{0}{1}{2}{3}",
+                BaseConverter.ConvertToBaseN(Red, 16, Alphabet.Hexadecimal, 2),
+                BaseConverter.ConvertToBaseN(Green, 16, Alphabet.Hexadecimal, 2),
+                BaseConverter.ConvertToBaseN(Blue, 16, Alphabet.Hexadecimal, 2),
+                BaseConverter.ConvertToBaseN(Alpha, 16, Alphabet.Hexadecimal, 2));
         }
 
     }
 
-    /*Public Class HEXColor
-        Public Sub New(Red As String, Green As String, Blue As String)
-            Me.Red = "00"
-            Me.Green = "00"
-            Me.Blue = "00"
-            If CheckForValidValue(Red) Then
-                Me.Red = Red
-            End If
-            If CheckForValidValue(Green) Then
-                Me.Green = Green
-            End If
-            If CheckForValidValue(Blue) Then
-                Me.Blue = Blue
-            End If
-        End Sub
-
-        Public Sub New()
-            Red = "00"
-            Green = "00"
-            Blue = "00"
-        End Sub
-
-        Public Shared Function CheckForValidValue(ByVal s As String) As Boolean
-            If s.Length<> 2 Then
-                Return False
-            End If
-
-            Dim digit() As Boolean = { False, False}
-
-    For x As Integer = 0 To 1
-                For y As Integer = 0 To Alphabet.HEX.Chars.Count - 1
-                    If s(x) = Alphabet.HEX.Chars(y) Then
-                        digit(x) = True
-                    End If
-                Next
-            Next
-
-            If digit(0) = True AndAlso digit(1) = True Then
-                Return True
-            End If
-            Return False
-        End Function
-
-        Public Property Red As String
-
-        Public Property Green As String
-
-        Public Property Blue As String
-
-        Public Shared Function FromRGB(ByVal c As Color) As HEXColor
-            Return New HEXColor(BaseConverter.ConvertBaseTenToN(c.R, 16, Alphabet.HEX, 2), BaseConverter.ConvertBaseTenToN(c.G, 16, Alphabet.HEX, 2), BaseConverter.ConvertBaseTenToN(c.B, 16, Alphabet.HEX, 2))
-        End Function
-
-        Public Shared Function FromRGB(Red As Byte, Green As Byte, Blue As Byte) As HEXColor
-            Return New HEXColor(BaseConverter.ConvertBaseTenToN(Red, 16, Alphabet.HEX, 2), BaseConverter.ConvertBaseTenToN(Green, 16, Alphabet.HEX, 2), BaseConverter.ConvertBaseTenToN(Blue, 16, Alphabet.HEX, 2))
-        End Function
-
-        Public Shared Function ToRGB(ByVal h As HEXColor) As Color
-            Dim co As New Color
-            Dim r, g, b As Integer
-            r = CInt(BaseConverter.ConvertBaseNToTen(h.Red, 16, Alphabet.HEX, False))
-            g = CInt(BaseConverter.ConvertBaseNToTen(h.Green, 16, Alphabet.HEX, False))
-            b = CInt(BaseConverter.ConvertBaseNToTen(h.Blue, 16, Alphabet.HEX, False))
-            co = Color.FromArgb(r, g, b)
-            Return co
-        End Function
-
-        Public Overrides Function ToString() As String
-            Return String.Format("#{0}{1}{2}", Red.ToUpper, Green.ToUpper, Blue.ToUpper)
-        End Function
-    End Class*/
 }

@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameShardsCore3.Attributes;
 using GameShardsCore3.ExtensionMethods.Arrays;
 using GameShardsCore3.StringManipulation;
+using GameShardsCore3.StringManipulation.DigitShortener;
 using static GameShardsCore3.Core.LibLanguage.LibLanguageManager;
 
 
 namespace GameShardsCore3.Mathematics.Numbers {
 
+    [DevelopedBy("SmokeyTheBandicoot")]
+    [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 1, 0)]
     public static class NumberManipulator {
 
+        public static string ToExpNotation(double Num, DigitShortener.ExponentialMode Mode = DigitShortener.ExponentialMode.OneToTen, ref double Mantissa, ref int Exponent, int Decimals = 1, double) {
+
+        }
+
+        /// <summary>
+        /// Returns all the perfect numbers which are less then Double.MaxValue()
+        /// </summary>
         public static readonly double[] PerfectNumbersInDouble = { 6, 28, 496, 8128, 33550336, 8589869056, 137438691328, 2305843008139952128 };
 
         /// <summary>

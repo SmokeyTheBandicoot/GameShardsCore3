@@ -9,6 +9,7 @@ namespace GameShardsCore3.AI.Pathfind.Dijkstra.Model {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 0, 0)]
     /// <summary>
     /// Represents a graph Node. Probably will became an interface to be applicable on various classes
     /// </summary>

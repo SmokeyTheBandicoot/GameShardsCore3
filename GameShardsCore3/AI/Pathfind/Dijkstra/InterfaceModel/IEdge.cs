@@ -10,6 +10,7 @@ namespace GameShardsCore3.AI.Pathfind.Dijkstra.InterfaceModel {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1,0,0)]
     public interface IEdge {
 
         string ID { get; set; }

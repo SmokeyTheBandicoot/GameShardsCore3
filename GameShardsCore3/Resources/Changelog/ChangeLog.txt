@@ -286,6 +286,7 @@ Dijkstra:
 +Added a Deck class which manages a deck of cards, including card shuffling
 +Added and improved various ways of generating Random numbers. Now they can be generated in distributions (Discrete/Continuous Uniform and Normal)
 +Added Many estension methods for arrays, namely Add, AddRange, Remove, RemoveRange, Insert, InsertRange, Reverse
-+Added custom attributes classes (Tested, ToTest, ToDo, WIP)
++Added custom attributes classes (Tested, ToTest, ToDo, WIP, Version(Major, Minor, Revision, Build)
+°Changed, Removed and Improved some functions in the Color namespace, in order to improve performance and maintain consistency
 °Refactored a lot of code in multiple classes and moved classes in appropriate folders
 °Rewritten all the code in C#, to allow full compatibility with Unity3D

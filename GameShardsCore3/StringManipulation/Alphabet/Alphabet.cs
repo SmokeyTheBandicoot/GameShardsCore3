@@ -127,7 +127,7 @@ using GameShardsCore3.Attributes;
         /// <summary>
         /// Alphabets
         /// </summary>
-        public static CharAlphabet Alpha {
+        public static CharAlphabet Alphabetical {
             get {
                 char[] c = { 'A', 'B', 'C', 'D', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
@@ -180,7 +180,7 @@ using GameShardsCore3.Attributes;
         /// <summary>
         /// Greek letters
         /// </summary>
-        public static CharAlphabet GreekLettersLower {
+        public static CharAlphabet GreekAphabet {
             get {
                 char[] c = { 'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω', 'ς' };
                 return new CharAlphabet(c);
@@ -192,10 +192,10 @@ using GameShardsCore3.Attributes;
         }
 
         [WIP()]
-        public static CharAlphabet GreekLettersUpper {
+        public static CharAlphabet GreekAlphabetCapitals {
             get {
-                char[] c = { };
-                return null;
+                char[] c = {'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'};
+                return new CharAlphabet(c);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace GameShardsCore3.Mathematics.BaseConverter {
     [MaintainedBy("SmokeyTheBandicoot")]
     public static class BaseConverter {
 
-        [ToTest()]
+        [Tested()]
         public static ulong ConverToBase10(string Number, int StartBase, CharAlphabet alphabet = null, bool CaseSensitive = false) {
 
             //If it is case sensitive, then just use the upper case version
@@ -52,7 +52,8 @@ namespace GameShardsCore3.Mathematics.BaseConverter {
             return result;
         }
 
-        [ToTest()]
+        [Tested()]
+        [Version(1,0,0,'a')]
         public static string ConvertToBaseN(ulong Number, int TargetBase, CharAlphabet alphabet = null, int MinDigits = 1, int sign = 0) {
 
             //Exceptions
