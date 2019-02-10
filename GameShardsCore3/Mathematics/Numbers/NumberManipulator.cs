@@ -17,7 +17,52 @@ namespace GameShardsCore3.Mathematics.Numbers {
     [Version(1, 1, 0)]
     public static class NumberManipulator {
 
-        public static string ToExpNotation(double Num, DigitShortener.ExponentialMode Mode = DigitShortener.ExponentialMode.OneToTen, ref double Mantissa, ref int Exponent, int Decimals = 1, double) {
+        /// <summary>
+        /// Shortens a number into it's exponential form. For example 1024 --> 1.024E3
+        /// </summary>
+        /// <param name="Num">Number to convert</param>
+        /// <param name="Mantissa">Reference parameter to get the resulting mantissa</param>
+        /// <param name="Exponent">Reference parameter to get the resulting exponent</param>
+        /// <param name="Decimals">Number of decimals</param>
+        /// <param name="ExponentialTreeshold">Treeshold after which the number should be shortened to exp notation. For example if treeshold is 5678, then 5677 is left as it is, 5678 will be shortened in 5.678E3</param>
+        /// <param name="Mode"></param>
+        /// <returns></returns>
+        [Version(1, 0, 0, 'b')]
+        public static string ToExpNotation(double Num, ref double Mantissa, ref int Exponent, ushort Decimals = 1, uint ExponentialTreeshold = 1000, DigitShortener.ExponentialMode Mode = DigitShortener.ExponentialMode.OneToTen) {
+
+            Exponent = 0;
+            if (Num < ExponentialTreeshold) return Num.ToString();
+
+            //Mode: OneToTen
+            if (Mode == DigitShortener.ExponentialMode.OneToTen) {
+                if (ExponentialTreeshold < 1) throw new ArgumentException(LangManager.GetString("exception_treeshold_not_valid_mode", CurrentCulture));
+
+                while (Math.Abs(Num) >= 10) {
+                    Num /= 10;
+                    Exponent++;
+                }
+
+                while (Math.Abs(Num) <= 1) {
+                    Num *= 10;
+                    Exponent--;
+                }
+
+                //Mode: ZeroToOne
+            } else {
+
+                while (Math.Abs(Num) >= 1) {
+                    Num /= 10;
+                    Exponent++;
+                }
+
+                while (Math.Abs(Num) < 0.1) {
+                    Num *= 10;
+                    Exponent--;
+                }
+            }
+
+            Mantissa = Math.Round(Num, (int)Decimals);
+            return Mantissa.ToString() + "E" + Exponent.ToString();
 
         }
 
@@ -135,7 +180,7 @@ namespace GameShardsCore3.Mathematics.Numbers {
             }
 
             foreach (T elem in val.Keys) {
-                if (val[elem] < occurrences){
+                if (val[elem] < occurrences) {
                     occurrences = val[elem];
                     Minority = elem;
                 }
@@ -167,7 +212,7 @@ namespace GameShardsCore3.Mathematics.Numbers {
             return MaxCommonDivisor(MaxCommonDivisor(arr.RemoveAt(arr.Length - 1)), arr[arr.Length - 1]);
         }
 
-        
+
 
 
     }

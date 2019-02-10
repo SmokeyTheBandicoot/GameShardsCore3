@@ -64,6 +64,7 @@
     <Compile Include="Core\LibLanguage\LibLanguageManager.cs" />
     <Compile Include="Date\Utils.cs" />
     <Compile Include="Exceptions\DeckEmptyException.cs" />
+    <Compile Include="Exceptions\IncompatibleArgumentsException.cs" />
     <Compile Include="ExtensionMethods\Arrays\ArrayExtended.cs" />
     <Compile Include="Gameworks\Cards\Card.cs" />
     <Compile Include="Gameworks\Cards\ICard.cs" />

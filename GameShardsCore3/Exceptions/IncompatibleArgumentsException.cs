@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameShardsCore3.ResourceManager {
+namespace GameShardsCore3.Exceptions {
 
-    public class ResourceManager<T> {
+    public class IncompatibleArgumentsException : Exception {
 
     }
-
-
-
-
-
 }

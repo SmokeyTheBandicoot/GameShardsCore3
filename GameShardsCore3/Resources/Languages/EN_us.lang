@@ -27,6 +27,7 @@ exception_invalid_percent = "Percent not valid. It has to be in [0, 1]"
 ## StringManipulation
 ### Alphabet
 exception_char_not_recognized = "Character not recognized"
+exception_treeshold_not_valid_mode = "Treeshold is not valid with this mode. If mode is One to Ten, then Treeshold has to be bigger than 1."
 
 
 

@@ -1,9 +1,0 @@
-﻿# Exceptions
-## AI
-error_graph_structure = "Qualcosa è andato storto con la struttura del grafo"
-## ArrayExtended
-index_must_be_from = "L'indice deve andare da"
-
-#Generic
-## Common
-to = "a"
