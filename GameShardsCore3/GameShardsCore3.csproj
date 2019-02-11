@@ -61,6 +61,9 @@
     <Compile Include="Colors\HEXColor.cs" />
     <Compile Include="Colors\HSLColor.cs" />
     <Compile Include="Colors\HSVColor.cs" />
+    <Compile Include="Colors\Color.cs" />
+    <Compile Include="Colors\ARGBColor.cs" />
+    <Compile Include="Colors\RYBColor.cs" />
     <Compile Include="Core\LibLanguage\LibLanguageManager.cs" />
     <Compile Include="Date\Utils.cs" />
     <Compile Include="Exceptions\DeckEmptyException.cs" />

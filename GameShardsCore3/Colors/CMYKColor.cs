@@ -13,7 +13,7 @@ namespace GameShardsCore3.Colors {
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
     [Version(1, 0, 0)]
-    public struct CMYKColor {
+    public class CMYKColor : Color {
 
         public float Cyan { get; set; }
         public float Magenta { get; set; }

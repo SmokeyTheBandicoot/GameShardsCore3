@@ -13,7 +13,7 @@ namespace GameShardsCore3.Colors {
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
     [Version(1, 0, 0)]
-    public struct HSVColor {
+    public class HSVColor : Color {
 
         public int Hue { get; set; }
         public float Saturation { get; set; }
@@ -49,7 +49,7 @@ namespace GameShardsCore3.Colors {
         /// </summary>
         /// <returns></returns>
         [ToTest()]
-        public Color ToARGB() {
+        public override ARGBColor ToARGB() {
             byte r, g, b;
             float C, X, m, r1 = 0, g1 = 0, b1 = 0;
 
@@ -93,7 +93,7 @@ namespace GameShardsCore3.Colors {
             r = (byte)((r1 + m) * 255);
             g = (byte)((g1 + m) * 255);
             b = (byte)((b1 + m) * 255);
-            return Color.FromArgb(Alpha, r, g, b);
+            return new ARGBColor(Alpha, r, g, b);
 
         }
 
@@ -132,8 +132,7 @@ namespace GameShardsCore3.Colors {
 
             if (delta == 0) {
                 s = 0;
-            }
-            else {
+            } else {
                 s = delta / cmax;
             }
 
