@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameShardsCore3</RootNamespace>
     <AssemblyName>GameShardsCore3</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,9 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\IQLearningCallback.cs" />
+    <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\QLearning.cs" />
+    <Compile Include="Algorithms\DataStructures\Graph\SingleSourceShortestPath\BellmanFordAlgorithm.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\Common\GraphEventArgs.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\InterfaceModel\IEdge.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\InterfaceModel\INode.cs" />
+    <Compile Include="Algorithms\DataStructures\Graph\SingleSourceShortestPath\DijkstraAlgorithm.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\Main\DijkstraAlgorithm.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\Model\Edge.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\Model\Node.cs" />
@@ -65,6 +70,10 @@
     <Compile Include="Colors\ARGBColor.cs" />
     <Compile Include="Colors\RYBColor.cs" />
     <Compile Include="Core\LibLanguage\LibLanguageManager.cs" />
+    <Compile Include="DataStructures\Graph\AdjacencyMapGraph.cs" />
+    <Compile Include="DataStructures\Graph\IEdge.cs" />
+    <Compile Include="DataStructures\Graph\IGraph.cs" />
+    <Compile Include="DataStructures\Graph\IVertex.cs" />
     <Compile Include="Date\Utils.cs" />
     <Compile Include="Exceptions\DeckEmptyException.cs" />
     <Compile Include="Exceptions\IncompatibleArgumentsException.cs" />
@@ -84,6 +93,66 @@
     <Compile Include="Mathematics\Numbers\NumberManipulator.cs" />
     <Compile Include="Mathematics\Operators\Operators.cs" />
     <Compile Include="Mathematics\Random\TrueRNG.cs" />
+    <Compile Include="Physics\Measurement\Measures\Acceleration.cs" />
+    <Compile Include="Physics\Measurement\Measures\AmountOfSubstance.cs" />
+    <Compile Include="Physics\Measurement\Measures\AngularVelocity.cs" />
+    <Compile Include="Physics\Measurement\Measures\Area.cs" />
+    <Compile Include="Physics\Measurement\Measures\CoefficientOfThermalExpansion.cs" />
+    <Compile Include="Physics\Measurement\Measures\Currency.cs" />
+    <Compile Include="Physics\Measurement\Measures\DataStorage.cs" />
+    <Compile Include="Physics\Measurement\Measures\DataTransfer.cs" />
+    <Compile Include="Physics\Measurement\Measures\DynamicViscosity.cs" />
+    <Compile Include="Physics\Measurement\Measures\ElectricCapacitance.cs" />
+    <Compile Include="Physics\Measurement\Measures\ElectricConductance.cs" />
+    <Compile Include="Physics\Measurement\Measures\EnergyDensity.cs" />
+    <Compile Include="Physics\Measurement\Measures\FuelConsumption.cs" />
+    <Compile Include="Physics\Measurement\Measures\PlaneAngle.cs" />
+    <Compile Include="Physics\Measurement\Measures\AngularAcceleration.cs" />
+    <Compile Include="Physics\Measurement\Measures\ElectricCharge.cs" />
+    <Compile Include="Physics\Measurement\Measures\ElectricCurrent.cs" />
+    <Compile Include="Physics\Measurement\Measures\Energy.cs" />
+    <Compile Include="Physics\Measurement\Measures\Force.cs" />
+    <Compile Include="Physics\Measurement\Measures\Length.cs" />
+    <Compile Include="Physics\Measurement\Measures\Power.cs" />
+    <Compile Include="Physics\Measurement\Measures\Pressure.cs" />
+    <Compile Include="Physics\Measurement\Measures\Speed.cs" />
+    <Compile Include="Physics\Measurement\Measures\Temperature.cs" />
+    <Compile Include="Physics\Measurement\Measures\Time.cs" />
+    <Compile Include="Physics\Measurement\Measures\Volume.cs" />
+    <Compile Include="Physics\Measurement\UnitConverter.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\AccelerationUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\AmountOfSubstanceUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\AngularVelocityUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\AreaUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\CoefficientOfThermalExpansionUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\CurrencyUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\DataStorageUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\DataTransferUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\DensityUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\DynamicViscosityUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ElectricCapacitanceUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ElectricConductanceUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ElectricVoltageUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\EnergyDensityUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\FuelConsumptionUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\PlaneAngleUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\AngularAccelerationUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ElectricChargeUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ElectricCurrentUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\EnergyUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\ForceUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\LengthUnit.cs" />
+    <Compile Include="Physics\Measurement\Measures\Mass.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\MassUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\PowerUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\PressureUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\SpeedUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\TemperatureUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\TimeUnit.cs" />
+    <Compile Include="Physics\Measurement\UnitsOfMeasurement\VolumeUnit.cs" />
+    <Compile Include="Physics\PhysicConstants.cs" />
+    <Compile Include="Physics\Measurement\Measure.cs" />
+    <Compile Include="Physics\Measurement\UnitOfMeasure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AI\Pathfind\Dijkstra\Model\Graph.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

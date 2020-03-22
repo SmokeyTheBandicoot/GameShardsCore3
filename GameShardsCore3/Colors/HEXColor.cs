@@ -15,7 +15,7 @@ namespace GameShardsCore3.Colors {
     [MaintainedBy("SmokeyTheBandicoot")]
     [Version(1, 0, 0, 'b')]
     [WIP()]
-    public struct HEXColor {
+    public class HEXColor : Color {
 
         [ToTest()]
         public byte Red { get; set; }
@@ -51,11 +51,11 @@ namespace GameShardsCore3.Colors {
         /// HEXColor from System.Drawing.Color
         /// </summary>
         /// <param name="C"></param>
-        public HEXColor(Color C) {
-            Red = C.R;
-            Green = C.G;
-            Blue = C.B;
-            Alpha = C.A;
+        public HEXColor(ARGBColor C) {
+            Red = C.Red;
+            Green = C.Green;
+            Blue = C.Blue;
+            Alpha = C.Alpha;
         }
 
         /// <summary>
@@ -81,20 +81,20 @@ namespace GameShardsCore3.Colors {
         }
 
 
-        public static HEXColor FromARGB(byte R, byte G, byte B, byte A) {
+        public static HEXColor FromARGBColor(byte R, byte G, byte B, byte A) {
             return new HEXColor(R, G, B, A);
         }
 
-        public static HEXColor FromARGBColor(Color C) {
-            return new HEXColor(C);
+        public override Color FromARGB(ARGBColor color) {
+            return FromARGB(color);
+        }
+
+        public override ARGBColor ToARGB() {
+            return ToARGB();
         }
 
         public static HEXColor FromCode(string Code) {
             return new HEXColor(Code);
-        }
-
-        public Color ToARGB() {
-            return Color.FromArgb(Red, Green, Blue, Alpha);
         }
 
         [ToTest()]

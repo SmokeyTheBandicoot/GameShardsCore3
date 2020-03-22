@@ -13,7 +13,7 @@ namespace GameShardsCore3.Colors {
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
     [Version(1, 0, 0)]
-    public struct HSLColor {
+    public class HSLColor : Color {
 
         public int Hue { get; set; }
         public float Saturation { get; set; }
@@ -35,21 +35,13 @@ namespace GameShardsCore3.Colors {
         /// HSLColor from System.Drawing.Color. Calls HSLColor.FromARGBColor()
         /// </summary>
         /// <param name="C"></param>
-        [ToTest()]
-        public HSLColor(Color C) {
-            HSLColor hsl = HSLColor.FromARGBColor(C);
-            Hue = hsl.Hue;
-            Saturation = hsl.Saturation;
-            Luminosity = hsl.Luminosity;
-            Alpha = hsl.Alpha;
-        }
 
         /// <summary>
         /// Returns a System.Drawing.Color in which ARGB components are converted from HSL (alpha is the same)
         /// </summary>
         /// <returns></returns>
         [ToTest()]
-        public Color ToARGB() {
+        public ARGBColor ToARGBColor() {
             byte r, g, b;
             float C, X, m, r1 = 0, g1 = 0, b1 = 0;
 
@@ -93,7 +85,7 @@ namespace GameShardsCore3.Colors {
             r = (byte)((r1 + m) * 255);
             g = (byte)((g1 + m) * 255);
             b = (byte)((b1 + m) * 255);
-            return Color.FromArgb(Alpha, r, g, b);
+            return new ARGBColor(Alpha, r, g, b);
 
         }
 
@@ -106,7 +98,7 @@ namespace GameShardsCore3.Colors {
         /// <param name="Alpha"></param>
         /// <returns></returns>
         [ToTest()]
-        public static HSLColor FromARGB(byte Red, byte Green, byte Blue, byte Alpha) {
+        public static HSLColor FromARGBColor(byte Red, byte Green, byte Blue, byte Alpha) {
             float r1, g1, b1;
             float cmax, cmin, delta;
             int h = 0;
@@ -140,8 +132,12 @@ namespace GameShardsCore3.Colors {
             return new HSLColor(h, s, l, Alpha);
         }
 
-        public static HSLColor FromARGBColor(Color C) {
-            return FromARGB(C.R, C.G, C.B, C.A);
+        public override Color FromARGB(ARGBColor color) {
+            return FromARGBColor(color.Red, color.Green, color.Blue, color.Alpha);
+        }
+
+        public override ARGBColor ToARGB() {
+            return ToARGBColor();
         }
 
         [ToTest()]

@@ -14,8 +14,7 @@ namespace GameShardsCore3.Colors {
     public abstract class Color {
 
         public abstract ARGBColor ToARGB();
-        public abstract Color FromARGB(Color color);
-
+        public abstract Color FromARGB(ARGBColor color);
 
     }
 }

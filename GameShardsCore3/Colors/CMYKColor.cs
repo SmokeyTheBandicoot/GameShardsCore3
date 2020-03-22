@@ -40,7 +40,7 @@ namespace GameShardsCore3.Colors {
         /// <param name="C"></param>
         [ToTest()]
         public CMYKColor(Color C) {
-            CMYKColor cmyk = CMYKColor.FromARGBColor(C);
+            CMYKColor cmyk = (CMYKColor)FromARGB(C.ToARGB());
             Cyan = cmyk.Cyan;
             Magenta = cmyk.Magenta;
             Yellow = cmyk.Yellow;
@@ -49,20 +49,19 @@ namespace GameShardsCore3.Colors {
         }
 
         /// <summary>
-        /// Returns a System.Drawing.Color in which ARGB components are converted from HSL (alpha is the same)
+        /// Returns a ARGB Color in which ARGB components are converted from CMYK (alpha is the same)
         /// </summary>
         /// <returns></returns>
-        [ToTest()]
-        public Color ToARGB() {
+        public override ARGBColor ToARGB() {
             byte r, g, b;
             r = (byte)(255 * (1 - Cyan) * (1 - Black));
             g = (byte)(255 * (1 - Magenta) * (1 - Black));
             b = (byte)(255 * (1 - Yellow) * (1 - Black));
-            return Color.FromArgb(Alpha, r, g, b);
+            return new ARGBColor(r, g, b, Alpha);
         }
 
         /// <summary>
-        /// Converts a ARGB color code to HSL Color.
+        /// Converts a ARGB color code to CMYK Color.
         /// </summary>
         /// <param name="Red"></param>
         /// <param name="Green"></param>
@@ -70,7 +69,7 @@ namespace GameShardsCore3.Colors {
         /// <param name="Alpha"></param>
         /// <returns></returns>
         [ToTest()]
-        public static CMYKColor FromARGB(byte Red, byte Green, byte Blue, byte Alpha) {
+        public static CMYKColor FromARGBColor(byte Red, byte Green, byte Blue, byte Alpha) {
             float r1, b1, g1;
             float c, m, y, k;
 
@@ -87,8 +86,8 @@ namespace GameShardsCore3.Colors {
             return new CMYKColor(c, m, y, k, Alpha);
         }
 
-        public static CMYKColor FromARGBColor(Color C) {
-            return FromARGB(C.R, C.G, C.B, C.A);
+        public override Color FromARGB(ARGBColor C) {
+            return FromARGBColor(C.Red, C.Green, C.Blue, C.Alpha);
         }
 
         [ToTest()]

@@ -136,6 +136,25 @@ namespace GameShardsCore3.ExtensionMethods.Arrays {
             Array.Copy(temp, 0, arr, start, end - start + 1);
             return arr;
         }
+
+        [ToTest()]
+        /// <summary>
+        /// Fills a portion of the array, from start index to end index
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static T[] Fill<T>(this T[] arr, T elem, int start, int end) {
+            if (end < start) throw new ArgumentException(LangManager.GetString("exception_index_end_before_start", CurrentCulture));
+            if (start > arr.Length || end > arr.Length) throw new IndexOutOfRangeException(LangManager.GetString("exception_index_oor", CurrentCulture));
+            if (end == start) return arr;
+            for (int x = start; x <= end; x++) {
+                arr[x] = elem;
+            }
+            return arr;
+        }
     }
 
 }

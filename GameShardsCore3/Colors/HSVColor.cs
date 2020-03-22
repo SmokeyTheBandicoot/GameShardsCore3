@@ -37,7 +37,7 @@ namespace GameShardsCore3.Colors {
         /// <param name="C"></param>
         [ToTest()]
         public HSVColor(Color C) {
-            HSVColor hsv = HSVColor.FromARGBColor(C);
+            HSVColor hsv = (HSVColor)FromARGB(C.ToARGB());
             Hue = hsv.Hue;
             Saturation = hsv.Saturation;
             Value = hsv.Value;
@@ -106,7 +106,7 @@ namespace GameShardsCore3.Colors {
         /// <param name="Alpha"></param>
         /// <returns></returns>
         [ToTest()]
-        public static HSVColor FromARGB(byte Red, byte Green, byte Blue, byte Alpha) {
+        public static HSVColor FromARGBColor(byte Red, byte Green, byte Blue, byte Alpha) {
             float r1, g1, b1;
             float cmax, cmin, delta;
             int h = 0;
@@ -139,8 +139,8 @@ namespace GameShardsCore3.Colors {
             return new HSVColor(h, s, v, Alpha);
         }
 
-        public static HSVColor FromARGBColor(Color C) {
-            return FromARGB(C.R, C.G, C.B, C.A);
+        public override Color FromARGB(ARGBColor color) {
+            return FromARGBColor(color.Red, color.Green, color.Blue, color.Alpha);
         }
 
         [ToTest()]
