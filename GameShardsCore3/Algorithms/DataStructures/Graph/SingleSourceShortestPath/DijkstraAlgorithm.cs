@@ -8,11 +8,11 @@ using GameShardsCore3.Attributes;
 using GameShardsCore3.DataStructures.Graph;
 using static GameShardsCore3.Core.LibLanguage.LibLanguageManager;
 
-namespace GameShardsCore3.AI.Pathfind.Dijkstra {
+namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestPath {
 
     [DevelopedBy("SmokeyTheBandicoot")]
     [MaintainedBy("SmokeyTheBandicoot")]
-    [Version(1, 0, 1)]
+    [Version(2, 0, 0)]
     /// <summary>
     /// Class which computes the Dijkstra algorithm on a IGraph instance
     /// </summary>
@@ -30,7 +30,7 @@ namespace GameShardsCore3.AI.Pathfind.Dijkstra {
             this.graph = graph;
         }
 
-        [Tested()]
+        [ToTest()]
         public void Execute(IVertex<Vertex> source) {
 
             //Creation of new HashSets

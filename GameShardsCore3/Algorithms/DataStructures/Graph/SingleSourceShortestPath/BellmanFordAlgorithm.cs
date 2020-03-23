@@ -1,12 +1,16 @@
 ﻿using GameShardsCore3.DataStructures.Graph;
+using GameShardsCore3.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameShardsCore3.AI.Pathfind {
+namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestPath {
 
+    [DevelopedBy("SmokeyTheBandicoot")]
+    [MaintainedBy("SmokeyTheBandicoot")]
+    [Version(1, 0, 0)]
     public class BellmanFordAlgorithm<Vertex, Edge> {
 
         private IGraph<Vertex, Edge> graph;
