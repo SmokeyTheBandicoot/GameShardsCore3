@@ -85,7 +85,7 @@ namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestP
         /// </summary>
         /// <param name="MaxDistance"></param>
         /// <returns></returns>
-        public IEnumerator<IVertex<Vertex>> getReacheable(double MaxDistance) {
+        public IEnumerable<IVertex<Vertex>> getReacheable(double MaxDistance) {
             if (distanceMap == null)
                  throw new InvalidOperationException("Bellman-Ford Algorithm has not been executed yet on this graph");
             foreach (KeyValuePair<IVertex<Vertex>, double> kvp in distanceMap) {
