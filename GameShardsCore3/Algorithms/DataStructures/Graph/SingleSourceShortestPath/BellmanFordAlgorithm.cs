@@ -94,6 +94,19 @@ namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestP
         }
 
         /// <summary>
+        /// Returns the distance from Source to Destination
+        /// </summary>
+        /// <param name="Destination"></param>
+        /// <returns></returns>
+        public double? GetDistanceTo(IVertex<Vertex> Destination) {
+            if (distanceMap == null)
+                throw new InvalidOperationException("Bellman ford algorithm has yet to be executed on this graph.");
+            if (distanceMap.ContainsKey(Destination))
+                return distanceMap[Destination];
+            return null;
+        }
+
+        /// <summary>
         /// Executes the BellMan-Ford algorithm on the graph
         /// </summary>
         /// <param name="source"></param>

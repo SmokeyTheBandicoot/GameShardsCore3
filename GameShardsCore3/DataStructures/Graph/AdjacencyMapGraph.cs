@@ -120,7 +120,7 @@ namespace GameShardsCore3.DataStructures.Graph {
 
             if (directedSearch) {
                 AdjMapGraphVertex dst = validate(destination);
-                if (dst.getOutgoing().ContainsKey(source)) return src.getOutgoing()[source];
+                if (dst.getOutgoing().ContainsKey(source)) return dst.getOutgoing()[source];
             }
 
             return null;
