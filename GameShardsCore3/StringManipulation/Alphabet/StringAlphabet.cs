@@ -14,11 +14,16 @@ namespace GameShardsCore3.StringManipulation.Alphabet {
 
         public string[] strings;
 
+        public StringAlphabet(string Name, string[] Chars) : base(Name, Chars) {
+            this.Name = Name;
+            this.Chars = Chars;
+        }
+
         public override string ToString() {
             return base.ToString() + "; Chars: " + strings.ToString();
         }
 
-        public IEnumerator<string> GetEnumerator() {
+        public new IEnumerator<string> GetEnumerator() {
             foreach (string c in strings) {
                 yield return c;
             }

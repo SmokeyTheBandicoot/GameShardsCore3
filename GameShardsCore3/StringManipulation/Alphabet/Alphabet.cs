@@ -1,27 +1,68 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameShardsCore3.Attributes;
+using GameShardsCore3.ExtensionMethods.Arrays;
 
-    namespace GameShardsCore3.StringManipulation.Alphabet {
+namespace GameShardsCore3.StringManipulation.Alphabet {
 
-    public abstract class Alphabet {
+    /// <summary>
+    /// Class which represents a set of symbols
+    /// </summary>
+    public class Alphabet : IEnumerable<string> {
 
-        internal string _name;
+        public string Name { get; set; }
 
-        public string name {
-            get {
-                return _name;
-            }
-            set {
-                _name = value;
-            }
+        public string[] Chars;
+
+        public Alphabet(string Name, string[] Chars = null) {
+            if (Chars == null) this.Chars = new string[] { };
+            this.Name = Name;
         }
 
         public override string ToString() {
-            return base.ToString() + "; Name: " + _name;
+            StringBuilder sb = new StringBuilder(" Symbols: ");
+            foreach (string c in this.Chars)
+                sb.Append(c).Append("; ");
+            return base.ToString() + "; Name: " + Name + sb.ToString(); ;
+        }
+
+        public void AddSymbol(string symbol) {
+            Chars.Append(symbol);
+        }
+
+        /// <summary>
+        /// Removes a symbol from the alphabet and returns it.
+        /// Returns null if the symbol has not been found
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        public string RemoveSymbol(string symbol) {
+            if (!Chars.Contains(symbol))
+                throw new ArgumentException("The alphabet does not contain such symbol");
+            int index = Chars.IndexOf(symbol);
+            if (index != -1) {
+                Chars.RemoveAt(index);
+                return symbol;
+            }
+            return null;
+        }
+
+        public void ConcatenateAlphabet(Alphabet other) {
+            Chars.AddRange(other.Chars);
+            
+        }
+
+        public IEnumerator<string> GetEnumerator() {
+            foreach (string s in Chars)
+                yield return s;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return Chars.GetEnumerator();
         }
 
         /// <summary>
@@ -30,7 +71,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet Binary {
             get {
                 char[] c = { '0', '1' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Binary", c);
             }
         }
 
@@ -40,7 +81,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet DNA {
             get {
                 char[] c = { 'A', 'C', 'G', 'T' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("DNA", c);
             }
         }
 
@@ -50,7 +91,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet RNA {
             get {
                 char[] c = { 'A', 'C', 'G', 'U' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("RNA", c);
             }
         }
 
@@ -60,7 +101,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet DNA_RNA {
             get {
                 char[] c = { 'A', 'C', 'G', 'T', 'U' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("DNA & RNA", c);
             }
         }
 
@@ -70,7 +111,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet Octal {
             get {
                 char[] c = { '0', '1', '2', '3', '4', '5', '6', '7' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Octal", c);
             }
         }
 
@@ -80,7 +121,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet Numerical {
             get {
                 char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Numbers", c);
             }
         }
 
@@ -90,7 +131,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet Hexadecimal {
             get {
                 char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Hexadecimal", c);
             }
         }
 
@@ -100,7 +141,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet Roman {
             get {
                 char[] c = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Roman", c);
             }
         }
 
@@ -110,17 +151,17 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet RomanExtended {
             get {
                 char[] c = { 'i', 'v', 'x', 'l', 'c', 'd', 'm', 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Roman Extended", c);
             }
         }
 
         /// <summary>
         /// Chars that cannot be used in Windows path names
         /// </summary>
-        public static CharAlphabet ReserverChars {
+        public static CharAlphabet WindowsReserverChars {
             get {
                 char[] c = { '<', '>', ':', '"', '/', '\\', '|', '?', '*' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Windows Reserved Chars", c);
             }
         }
 
@@ -131,7 +172,7 @@ using GameShardsCore3.Attributes;
             get {
                 char[] c = { 'A', 'B', 'C', 'D', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("Alphabetical", c);
             }
         }
 
@@ -143,7 +184,7 @@ using GameShardsCore3.Attributes;
                 char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                     'A', 'B', 'C', 'D', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("Alphanumeric", c);
             }
         }
 
@@ -153,7 +194,7 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet SIMagnitudePrefixes {
             get {
                 char[] c = {'y', 'z', 'a', 'f', 'p', 'n', 'µ', 'm', ' ', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("International System Magnitude Prefixes", c);
             }
         }
 
@@ -163,17 +204,17 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet EuropeanMagnitudePrefixes {
             get {
                 char[] c = {'k', 'm', 'M', 'b', 'B', 't', 'T', 'q', 'Q'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("European Magnitude Prefixes", c);
             }
         }
 
         /// <summary>
         /// Thousand, Million, Billion, Trillion, quadrillion, Quintillion, sestillion, Septillion
         /// </summary>
-        public static CharAlphabet EnglishMagnitudePrefixes {
+        public static CharAlphabet USMagnitudePrefixes {
             get {
                 char[] c = { 'k', 'M', 'B', 'T', 'q', 'Q', 's', 'S'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("US Magnitude Prefixes", c);
             }
         }
 
@@ -183,19 +224,15 @@ using GameShardsCore3.Attributes;
         public static CharAlphabet GreekAphabet {
             get {
                 char[] c = { 'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω', 'ς' };
-                return new CharAlphabet(c);
+                return new CharAlphabet("Greek lower case", c);
             }
-            /*Public Shared ReadOnly Property CapitalGreekAlphabet As CharAlphabet
-                Get
-                    Return New CharAlphabet({ CChar("Α"), CChar("Β"), CChar("Γ"), CChar("Δ"), CChar("Ε"), CChar("Ζ"), CChar("Η"), CChar("Θ"), CChar("Ι"), CChar("Κ"), CChar("Λ"), CChar("Μ"), CChar("Ν"), CChar("Ξ"), CChar("Ο"), CChar("Π"), CChar("Ρ"), CChar("Σ"), CChar("Τ"), CChar("Υ"), CChar("Φ"), CChar("Χ"), CChar("Ψ"), CChar("Ω")}.ToList)
-            */
         }
 
         [WIP()]
         public static CharAlphabet GreekAlphabetCapitals {
             get {
                 char[] c = {'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'};
-                return new CharAlphabet(c);
+                return new CharAlphabet("Greek upper case", c);
             }
         }
     }

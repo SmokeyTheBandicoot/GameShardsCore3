@@ -35,7 +35,7 @@ namespace GameShardsCore3.Mathematics.BaseConverter {
             //Iterates through alphabet chars and when it finds the char
             //then it takes it's index, which is also it's value
             for (int x = 0; x < chars.Count(); x++)
-                for (int y = 0; y < alphabet.Count(); y++)
+                for (int y = 0; y < alphabet.Chars.Count(); y++)
                     nums[x] = y;
 
             //Conversion has failed, there's still a number which is -1

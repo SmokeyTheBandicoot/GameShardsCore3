@@ -12,13 +12,15 @@ namespace GameShardsCore3.StringManipulation.Alphabet {
     [MaintainedBy("SmpokeyTheBandicoot")]
     public class CharAlphabet : Alphabet, IEnumerable<char>{
 
-        public char[] Chars { get; set; }
+        public new char[] Chars { get; set; }
+
+        public new string Name { get; set; }
 
         public override string ToString() {
             return base.ToString() + "; Chars: " + Chars.ToString();
         }
 
-        public IEnumerator<char> GetEnumerator() {
+        public new IEnumerator<char> GetEnumerator() {
             foreach (char c in Chars) {
                 yield return c;
             }
@@ -28,12 +30,9 @@ namespace GameShardsCore3.StringManipulation.Alphabet {
             return Chars.GetEnumerator();
         }
 
-        public CharAlphabet(char[] chars) {
-            Chars = chars;
-        }
-
-        public CharAlphabet() {
-            Chars = null;
+        public CharAlphabet(string Name, char[] chars) : base(Name, null) {
+            base.Name = Name;
+            this.Chars = chars;
         }
     }
 

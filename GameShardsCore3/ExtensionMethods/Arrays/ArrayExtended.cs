@@ -155,6 +155,34 @@ namespace GameShardsCore3.ExtensionMethods.Arrays {
             }
             return arr;
         }
+
+        [ToTest()]
+        /// <summary>
+        /// Returns the first index in which resides element elem, -1 if not found
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr">Array where to search</param>
+        /// <param name="elem">Element to search</param>
+        /// <param name="startAt">Index where to start from. The function cycles through the array as a circular list</param>
+        /// <param name="leftToRight">If true, the search will start from startAt and will continue to bigger indices and return 
+        /// in a circular way to startAt - 1, otherwise the search will continue to smaller indices and continue in a
+        /// circular way to startAt + 1</param>
+        /// <returns></returns>
+        public static int IndexOf<T>(this T[] arr, T elem, int startAt = 0, bool leftToRight = true) {
+            if (startAt >= arr.Length) throw new ArgumentException("startAt is bigger than array's size");
+            if (startAt < 0) throw new ArgumentException("startAt must be non-negative");
+            if (arr.Length == 0) return -1;
+            for (int x = 0; x < arr.Length; x++) {
+                int index = x + startAt;
+                if (arr[index].Equals(elem)) return index;
+                if (leftToRight) index++; else index--;
+                if (index >= arr.Length) index = 0;
+                else if (index < 0) index = arr.Length - 1;
+            }
+            return -1;
+        }
+
+
     }
 
 }

@@ -290,3 +290,19 @@ Dijkstra:
 °Changed, Removed and Improved some functions in the Color namespace, in order to improve performance and maintain consistency
 °Refactored a lot of code in multiple classes and moved classes in appropriate folders
 °Rewritten all the code in C#, to allow full compatibility with Unity3D
+-Removed Matrix Manipulation and operators (inlcuded in .NET framework libraries)
+-Removed SummationMultiplication classes (won't be part of the 3.x version of the library)
+-Removed GSRegEx (Will return under a different name)
+-Removed many other classes that will slowly return to the library
+
+
+
+^Version 3.1.0
++Added QLearning for reinforcement learning
++Added DataStructures (Trees, Graphs, List and more) and Algorithms to be performed on them (Dijkstra, Bellman-ford, DFS, BFS, and more)
+°Moved Dijkstra algorithm from AI.Pathfinding to Algorithms.DataStructures.Graph.SingleSourceShortestPath
+-Removed Pathfinding (moved to Algorithms)
+
+
+
+

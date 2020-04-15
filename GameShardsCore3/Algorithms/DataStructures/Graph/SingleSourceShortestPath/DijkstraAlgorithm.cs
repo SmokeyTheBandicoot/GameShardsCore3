@@ -1,11 +1,11 @@
-﻿using GameShardsCore3.AI.Pathfind.Dijkstra;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameShardsCore3.Attributes;
 using GameShardsCore3.DataStructures.Graph;
+using GameShardsCore3.DataStructures.Tree;
 using static GameShardsCore3.Core.LibLanguage.LibLanguageManager;
 
 namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestPath {
@@ -30,7 +30,19 @@ namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestP
             this.graph = graph;
         }
 
-        [ToTest()]
+        public Dictionary<IVertex<Vertex>, IVertex<Vertex>> getPredecessors() {
+            if (Predecessors != null)
+                return Predecessors;
+            throw new InvalidOperationException("Dijkstra Algorithm has not been executed yet on this graph");
+        }
+
+        public Dictionary<IVertex<Vertex>, double> getDistanceMap() {
+            if (Distance != null)
+                return Distance;
+            throw new InvalidOperationException("Dijkstra Algorithm has not been executed yet on this graph");
+        }
+
+        [Tested()]
         public void Execute(IVertex<Vertex> source) {
 
             //Creation of new HashSets
@@ -53,6 +65,14 @@ namespace GameShardsCore3.Algorithms.DataStructures.Graphs.SingleSourceShortestP
 
         }
 
+        public ITree<IVertex<Vertex>> getShortestSpanningTree(IVertex<Vertex> source) {
+            this.Execute(source);
+            throw new NotImplementedException();
+        }
+
+        private void buildTreeFromPredecessors() {
+
+        }
 
         private void FindMinimalDistances(IVertex<Vertex> node) {
             AdjacentNodes.Clear();

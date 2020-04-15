@@ -45,7 +45,7 @@ namespace GameShardsCore3.DataStructures.Graph {
             return v;
         }
 
-        public IEdge<Edge> insertEdge(IVertex<Vertex> source, IVertex<Vertex> destination, Edge element, double weight, bool addInverse = false) {
+        public IEdge<Edge> addEdge(IVertex<Vertex> source, IVertex<Vertex> destination, Edge element, double weight, bool addInverse = false) {
 
             if (getEdge(source, destination) == null) {
                 if (addInverse && getEdge(destination, source) != null)
@@ -116,15 +116,23 @@ namespace GameShardsCore3.DataStructures.Graph {
 
             AdjMapGraphVertex src = validate(source);
 
-            if (src.getOutgoing()[destination] != null) return src.getOutgoing()[destination];
+            if (src.getOutgoing().ContainsKey(destination)) return src.getOutgoing()[destination];
 
             if (directedSearch) {
                 AdjMapGraphVertex dst = validate(destination);
-                if (dst.getOutgoing()[source] != null) return src.getOutgoing()[source];
+                if (dst.getOutgoing().ContainsKey(source)) return src.getOutgoing()[source];
             }
 
             return null;
 
+        }
+
+        public IVertex<Vertex> getVertex(Vertex Vertex) {
+            foreach (var vert in getVertices()) {
+                if (vert.getElement().Equals(Vertex))
+                    return vert;
+            }
+            return null;
         }
 
         public List<IVertex<Vertex>> getEndpoints(IEdge<Edge> edge) {
@@ -203,6 +211,10 @@ namespace GameShardsCore3.DataStructures.Graph {
                 return outgoing;
             }
 
+            public override string ToString() {
+                return element.ToString();
+            }
+
         }
 
         public class AdjMapGraphEdge : IEdge<Edge> {
@@ -229,6 +241,10 @@ namespace GameShardsCore3.DataStructures.Graph {
 
             public double getWeight() {
                 return this.weight;
+            }
+
+            public override string ToString() {
+                return this.element.ToString() + " [" + this.weight + "]";
             }
 
         }

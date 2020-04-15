@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,14 +48,10 @@
   <ItemGroup>
     <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\IQLearningCallback.cs" />
     <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\QLearning.cs" />
+    <Compile Include="Algorithms\DataStructures\Graph\ShortestSpanningTree\BreadthFirstSearch.cs" />
+    <Compile Include="Algorithms\DataStructures\Graph\ShortestSpanningTree\DepthFirstSearch.cs" />
     <Compile Include="Algorithms\DataStructures\Graph\SingleSourceShortestPath\BellmanFordAlgorithm.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\Common\GraphEventArgs.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\InterfaceModel\IEdge.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\InterfaceModel\INode.cs" />
     <Compile Include="Algorithms\DataStructures\Graph\SingleSourceShortestPath\DijkstraAlgorithm.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\Main\DijkstraAlgorithm.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\Model\Edge.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\Model\Node.cs" />
     <Compile Include="Attributes\DevelopedByAttribute.cs" />
     <Compile Include="Attributes\MaintainedByAttribute.cs" />
     <Compile Include="Attributes\TestedAttribute.cs" />
@@ -74,6 +71,9 @@
     <Compile Include="DataStructures\Graph\IEdge.cs" />
     <Compile Include="DataStructures\Graph\IGraph.cs" />
     <Compile Include="DataStructures\Graph\IVertex.cs" />
+    <Compile Include="DataStructures\Tree\BinaryTree\IBinaryTree.cs" />
+    <Compile Include="DataStructures\Tree\ITree.cs" />
+    <Compile Include="DataStructures\Tree\Tree.cs" />
     <Compile Include="Date\Utils.cs" />
     <Compile Include="Exceptions\DeckEmptyException.cs" />
     <Compile Include="Exceptions\IncompatibleArgumentsException.cs" />
@@ -154,12 +154,18 @@
     <Compile Include="Physics\Measurement\Measure.cs" />
     <Compile Include="Physics\Measurement\UnitOfMeasure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AI\Pathfind\Dijkstra\Model\Graph.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QueryHelper\ICharSequence.cs" />
+    <Compile Include="QueryHelper\INumberSequence.cs" />
+    <Compile Include="QueryHelper\IQueryExpressionOperator.cs" />
+    <Compile Include="QueryHelper\IRegistry.cs" />
+    <Compile Include="QueryHelper\IRegistryEntry.cs" />
+    <Compile Include="QueryHelper\ISequence.cs" />
+    <Compile Include="QueryHelper\QueryParser.cs" />
     <Compile Include="ResourceManager\LanguageManager\Language.cs" />
     <Compile Include="ResourceManager\LanguageManager\LanguageManager.cs" />
     <Compile Include="ResourceManager\ResourceEntry.cs" />

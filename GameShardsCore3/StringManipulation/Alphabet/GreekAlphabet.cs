@@ -14,6 +14,13 @@ namespace GameShardsCore3.StringManipulation.Alphabet {
     [Version(1, 0, 0)]
     public sealed class GreekAlphabet : Alphabet{
 
+        public new char[] Chars { get; set; }
+
+        public GreekAlphabet() : base("Greek Alphabet", null) {
+            this.Name = "Greek Alphabet";
+            this.Chars = Alphabet.GreekAphabet.Chars;
+        }
+
         public static char Alpha(bool capital = false) {
             if (capital) return GreekAlphabetCapitals.Chars[0];
             else return GreekAphabet.Chars[0];

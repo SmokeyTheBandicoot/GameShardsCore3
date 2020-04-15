@@ -24,5 +24,10 @@ namespace GameShardsCore3.DataStructures.Graph {
         public List<IVertex<Vertex>> getEndpoints(IEdge<Edge> edge);
         public IVertex<Vertex> getOpposite(IVertex<Vertex> source, IEdge<Edge> edge);
 
+        public IVertex<Vertex> addVertex(Vertex element);
+        public IEdge<Edge> addEdge(IVertex<Vertex> source, IVertex<Vertex> destination, Edge element, double weight, bool addInverse = false);
+        public void removeVertex(IVertex<Vertex> vertex);
+        public void removeEdge(IEdge<Edge> edge, bool directed = true);
+
     }
 }
