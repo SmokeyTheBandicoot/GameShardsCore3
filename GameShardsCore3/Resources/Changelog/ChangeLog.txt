@@ -305,4 +305,19 @@ Dijkstra:
 
 
 
-
+^Version 3.2.0
++ Added new functions in BellmanFordAlgorithm
++ Added PrimJarnik algorithm for graph
++ Added Breadth first algorithm for graph
++ Added Depth first search for graph
++ Added Tree<T> class, representing a general linked tree
++ Added more utility functions in ITree
++ Added more utility functions in AdjacencyMatrixGraph
++ Added AdaptableHeapPriorityQueue
++ Added PositionalList
++ Added IPriorityQueue
++ Added UnsortedPriorityQueue
++ Added SortedPriorityQueue
++ Started working on QueryParser
++ Added new alphabets and utility functions
+° Reworked a lot of classes in Alphabets
