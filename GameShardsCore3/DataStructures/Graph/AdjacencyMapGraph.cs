@@ -112,13 +112,13 @@ namespace GameShardsCore3.DataStructures.Graph {
             return edges;
         }
 
-        public IEdge<Edge> getEdge(IVertex<Vertex> source, IVertex<Vertex> destination, bool directedSearch = true) {
+        public IEdge<Edge> getEdge(IVertex<Vertex> source, IVertex<Vertex> destination, bool undirectedSearch = false) {
 
             AdjMapGraphVertex src = validate(source);
 
             if (src.getOutgoing().ContainsKey(destination)) return src.getOutgoing()[destination];
 
-            if (directedSearch) {
+            if (undirectedSearch) {
                 AdjMapGraphVertex dst = validate(destination);
                 if (dst.getOutgoing().ContainsKey(source)) return dst.getOutgoing()[source];
             }
