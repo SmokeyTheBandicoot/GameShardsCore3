@@ -8,6 +8,7 @@ using GameShardsCore3.DataStructures.Graph;
 
 namespace GameShardsCore3.Algorithms.DataStructures.Graph.MinimumSpanningTree {
     
+    /*
     public class PrimJarnikAlgorithm<Vertex, Edge> {
 
         Dictionary<Vertex, double> d;
@@ -41,4 +42,6 @@ namespace GameShardsCore3.Algorithms.DataStructures.Graph.MinimumSpanningTree {
 
 
     }
+
+    */
 }

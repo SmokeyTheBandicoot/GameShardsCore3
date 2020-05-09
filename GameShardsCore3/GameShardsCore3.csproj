@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\IQLearningCallback.cs" />
     <Compile Include="AI\MachineLearning\ReinforcementLearning\QLearning\QLearning.cs" />
+    <Compile Include="Algorithms\DataStructures\Graph\MinimumSpanningTree\PrimJarnikAlgorithm.cs" />
     <Compile Include="Algorithms\DataStructures\Graph\ShortestSpanningTree\BreadthFirstSearch.cs" />
     <Compile Include="Algorithms\DataStructures\Graph\ShortestSpanningTree\DepthFirstSearch.cs" />
     <Compile Include="Algorithms\DataStructures\Graph\SingleSourceShortestPath\BellmanFordAlgorithm.cs" />
@@ -71,6 +72,13 @@
     <Compile Include="DataStructures\Graph\IEdge.cs" />
     <Compile Include="DataStructures\Graph\IGraph.cs" />
     <Compile Include="DataStructures\Graph\IVertex.cs" />
+    <Compile Include="DataStructures\List\DoublyLinkedBase.cs" />
+    <Compile Include="DataStructures\List\PositionalList.cs" />
+    <Compile Include="DataStructures\PriorityQueue\AdaptableHeapPriorityQueue.cs" />
+    <Compile Include="DataStructures\PriorityQueue\HeapPriorityQueue.cs" />
+    <Compile Include="DataStructures\PriorityQueue\IPriorityQueue.cs" />
+    <Compile Include="DataStructures\PriorityQueue\SortedPriorityQueue.cs" />
+    <Compile Include="DataStructures\PriorityQueue\UnsortedPriorityQueue.cs" />
     <Compile Include="DataStructures\Tree\BinaryTree\IBinaryTree.cs" />
     <Compile Include="DataStructures\Tree\ITree.cs" />
     <Compile Include="DataStructures\Tree\Tree.cs" />

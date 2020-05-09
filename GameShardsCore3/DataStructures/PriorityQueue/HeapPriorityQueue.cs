@@ -23,7 +23,7 @@ namespace GameShardsCore3.DataStructures.PriorityQueue {
         protected void swap(int i, int j) { (data[i], data[j]) = (data[j], data[i]); }
 
         protected void upHeap(int j) {
-            int parent = parent(j);
+            int parent = this.parent(j);
             if (j > 0 && data[j] < data[parent]) {
                 swap(j, parent);
                 upHeap(parent);
@@ -71,6 +71,7 @@ namespace GameShardsCore3.DataStructures.PriorityQueue {
                 throw new InvalidOperationException("The piority queue is empty");
             Item item = data[0];
             swap(0, data.Count - 1);
+            data.Remove(item);
             downHeap(0);
             return (item.key, item.value);
         }

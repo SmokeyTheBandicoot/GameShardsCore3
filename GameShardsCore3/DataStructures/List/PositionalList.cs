@@ -166,7 +166,7 @@ namespace GameShardsCore3.DataStructures.List {
             Node original = validate(p);
             T old = original.element;
             original.element = newElement;
-            return base.Remove(old);
+            return old;//base.Remove(old);
         }
 
     }
